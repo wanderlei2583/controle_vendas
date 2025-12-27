@@ -52,7 +52,7 @@ class CategoriaCard extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: cor.withOpacity(0.2),
+          backgroundColor: cor.withValues(alpha: 0.2),
           child: Icon(icone, color: cor),
         ),
         title: Text(

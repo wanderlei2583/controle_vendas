@@ -36,6 +36,14 @@ class ItemVenda {
     return (lucro / subtotal) * 100;
   }
 
+  /// Obtém o nome do produto (via variação)
+  String get nomeProduto {
+    if (variacao != null) {
+      return variacao!.nome;
+    }
+    return 'Variação #$variacaoId';
+  }
+
   /// Converte objeto para Map (para salvar no banco)
   Map<String, dynamic> toMap() {
     return {

@@ -1,7 +1,4 @@
 import 'package:flutter/foundation.dart';
-import '../models/venda.dart';
-import '../models/produto.dart';
-import '../models/variacao.dart';
 import '../services/database/database_service.dart';
 
 /// Dados para gráfico de vendas por dia

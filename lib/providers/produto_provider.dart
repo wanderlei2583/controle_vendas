@@ -136,7 +136,15 @@ class ProdutoProvider extends ChangeNotifier {
       notifyListeners();
       return true;
     } catch (e) {
-      _errorMessage = 'Erro ao excluir produto: $e';
+      // Verifica se é erro de constraint (produto com vendas)
+      if (e.toString().contains('FOREIGN KEY constraint failed') ||
+          e.toString().contains('constraint')) {
+        _errorMessage =
+            'Este produto não pode ser excluído pois possui vendas registradas.\n\n'
+            'Desative o produto ao invés de excluí-lo para manter o histórico.';
+      } else {
+        _errorMessage = 'Erro ao excluir produto: $e';
+      }
       notifyListeners();
       return false;
     }

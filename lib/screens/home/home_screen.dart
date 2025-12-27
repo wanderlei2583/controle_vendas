@@ -8,6 +8,7 @@ import '../categorias/categoria_list_screen.dart';
 import '../produtos/produto_list_screen.dart';
 import '../vendas/venda_list_screen.dart';
 import '../estoque/estoque_screen.dart';
+import '../configuracoes/configuracoes_screen.dart';
 import 'widgets/metric_card.dart';
 import 'widgets/sales_chart.dart';
 
@@ -125,7 +126,12 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text(AppStrings.configuracoes),
               onTap: () {
                 Navigator.pop(context);
-                // TODO: Navegar para configurações
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ConfiguracoesScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -382,28 +388,157 @@ class _RelatoriosTab extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Relatórios'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.bar_chart_outlined,
-              size: 100,
-              color: Colors.grey[400],
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Relatórios em desenvolvimento',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Colors.grey[600],
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          // Informação
+          Card(
+            color: AppColors.primary.withValues(alpha: 0.1),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Icon(Icons.info_outline, color: AppColors.primary),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Gere relatórios em PDF das suas vendas e compartilhe',
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
                   ),
+                ],
+              ),
             ),
-            const SizedBox(height: 8),
-            const Text(
-              'Será implementado na FASE 4',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ],
+          ),
+          const SizedBox(height: 24),
+
+          // Título
+          Text(
+            'Relatórios Disponíveis',
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 16),
+
+          // Cards de ações
+          _buildReportCard(
+            context,
+            icon: Icons.receipt_long,
+            title: 'Relatório de Vendas',
+            subtitle: 'Gere PDF com vendas por período',
+            color: Colors.blue,
+            onTap: () {
+              // TODO: Implementar tela de seleção de período
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Selecione uma venda na aba "Vendas" e clique no ícone PDF'),
+                  duration: Duration(seconds: 3),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 12),
+
+          _buildReportCard(
+            context,
+            icon: Icons.inventory_2,
+            title: 'Relatório de Estoque',
+            subtitle: 'Visualize produtos e quantidades',
+            color: Colors.orange,
+            onTap: () {
+              // Navegar para aba de estoque
+              final homeState = context.findAncestorStateOfType<_HomeScreenState>();
+              homeState?.changeTab(2);
+            },
+          ),
+          const SizedBox(height: 12),
+
+          _buildReportCard(
+            context,
+            icon: Icons.trending_up,
+            title: 'Dashboard Financeiro',
+            subtitle: 'Veja gráficos e estatísticas',
+            color: Colors.green,
+            onTap: () {
+              // Navegar para aba de dashboard
+              final homeState = context.findAncestorStateOfType<_HomeScreenState>();
+              homeState?.changeTab(0);
+            },
+          ),
+          const SizedBox(height: 12),
+
+          _buildReportCard(
+            context,
+            icon: Icons.backup,
+            title: 'Backup de Dados',
+            subtitle: 'Faça backup do banco de dados',
+            color: Colors.purple,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ConfiguracoesScreen(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReportCard(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Card(
+      elevation: 2,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: color, size: 32),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey[400]),
+            ],
+          ),
         ),
       ),
     );

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/utils/currency_formatter.dart';
 import '../../core/utils/date_formatter.dart';
+import '../../core/constants/app_colors.dart';
 import '../../models/venda.dart';
 import '../../models/forma_pagamento.dart';
 import '../../providers/venda_provider.dart';
+import '../../services/pdf/pdf_service.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/loading_indicator.dart';
 
@@ -41,6 +43,32 @@ class _VendaDetalhesScreenState extends State<VendaDetalhesScreen> {
         _venda = venda;
         _isLoading = false;
       });
+    }
+  }
+
+  Future<void> _gerarPDF() async {
+    if (_venda == null) return;
+
+    try {
+      await PDFService.gerarReciboPDF(_venda!);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('PDF gerado com sucesso!'),
+            backgroundColor: AppColors.success,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro ao gerar PDF: $e'),
+            backgroundColor: AppColors.error,
+          ),
+        );
+      }
     }
   }
 
@@ -121,6 +149,13 @@ class _VendaDetalhesScreenState extends State<VendaDetalhesScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Venda #${venda.id}',
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.picture_as_pdf),
+            onPressed: _gerarPDF,
+            tooltip: 'Gerar PDF',
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),

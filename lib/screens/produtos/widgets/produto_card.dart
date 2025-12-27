@@ -21,7 +21,7 @@ class ProdutoCard extends StatelessWidget {
     return Card(
       child: ExpansionTile(
         leading: CircleAvatar(
-          backgroundColor: AppColors.primary.withOpacity(0.1),
+          backgroundColor: AppColors.primary.withValues(alpha: 0.1),
           child: Text(
             produto.nome[0].toUpperCase(),
             style: const TextStyle(
@@ -60,7 +60,7 @@ class ProdutoCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppColors.error.withOpacity(0.1),
+                  color: AppColors.error.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
@@ -76,7 +76,7 @@ class ProdutoCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppColors.warning.withOpacity(0.1),
+                  color: AppColors.warning.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
@@ -150,10 +150,10 @@ class ProdutoCard extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       color: estoqueZerado
-                          ? AppColors.error.withOpacity(0.1)
+                          ? AppColors.error.withValues(alpha: 0.1)
                           : estoqueBaixo
-                              ? AppColors.warning.withOpacity(0.1)
-                              : AppColors.success.withOpacity(0.1),
+                              ? AppColors.warning.withValues(alpha: 0.1)
+                              : AppColors.success.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Row(

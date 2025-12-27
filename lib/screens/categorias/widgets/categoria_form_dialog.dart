@@ -178,7 +178,7 @@ class _CategoriaFormDialogState extends State<CategoriaFormDialog> {
                       height: 50,
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? _getColorFromHex(_corSelecionada).withOpacity(0.2)
+                            ? _getColorFromHex(_corSelecionada).withValues(alpha: 0.2)
                             : Colors.grey[200],
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
