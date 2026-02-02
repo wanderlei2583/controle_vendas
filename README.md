@@ -60,15 +60,19 @@
 <div align="center">
 
 ### Dashboard
+
 ![Dashboard](screenshots/dashboard.jpg)
 
 ### Gestão de Produtos
+
 ![Produtos](screenshots/produtos.jpg)
 
 ### Vendas
+
 ![Vendas](screenshots/vendas.jpg)
 
 ### Relatórios
+
 ![Relatórios](screenshots/relatorios.jpg)
 
 </div>
@@ -78,25 +82,27 @@
 ## 🛠️ Tecnologias Utilizadas
 
 ### Stack Principal
+
 - **Framework**: Flutter 3.10+
 - **Linguagem**: Dart 3.0+
 - **Banco de Dados**: SQLite (sqflite + sqflite_common_ffi)
 - **Gerenciamento de Estado**: Provider
 
 ### Bibliotecas Principais
-| Biblioteca | Versão | Finalidade |
-|-----------|--------|------------|
-| `provider` | ^6.1.2 | Gerenciamento de estado |
-| `sqflite` | ^2.3.3 | Banco de dados (mobile) |
-| `sqflite_common_ffi` | ^2.3.3 | Banco de dados (desktop) |
-| `fl_chart` | ^0.68.0 | Gráficos e visualizações |
-| `pdf` | ^3.11.1 | Geração de PDFs |
-| `printing` | ^5.13.2 | Impressão e compartilhamento |
-| `share_plus` | ^9.0.0 | Compartilhamento de arquivos |
-| `intl` | ^0.19.0 | Formatação (pt_BR) |
-| `path_provider` | ^2.1.3 | Acesso a diretórios do sistema |
-| `file_picker` | ^8.0.6 | Seleção de arquivos |
-| `permission_handler` | ^11.3.1 | Gerenciamento de permissões |
+
+| Biblioteca           | Versão  | Finalidade                     |
+| -------------------- | ------- | ------------------------------ |
+| `provider`           | ^6.1.2  | Gerenciamento de estado        |
+| `sqflite`            | ^2.3.3  | Banco de dados (mobile)        |
+| `sqflite_common_ffi` | ^2.3.3  | Banco de dados (desktop)       |
+| `fl_chart`           | ^0.68.0 | Gráficos e visualizações       |
+| `pdf`                | ^3.11.1 | Geração de PDFs                |
+| `printing`           | ^5.13.2 | Impressão e compartilhamento   |
+| `share_plus`         | ^9.0.0  | Compartilhamento de arquivos   |
+| `intl`               | ^0.19.0 | Formatação (pt_BR)             |
+| `path_provider`      | ^2.1.3  | Acesso a diretórios do sistema |
+| `file_picker`        | ^8.0.6  | Seleção de arquivos            |
+| `permission_handler` | ^11.3.1 | Gerenciamento de permissões    |
 
 ---
 
@@ -115,7 +121,7 @@
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/DevWander/controle_vendas.git
+git clone https://github.com/wanderlei2583/controle_vendas.git
 cd controle_vendas
 ```
 
@@ -128,6 +134,7 @@ flutter pub get
 ### 3. Execute o aplicativo
 
 #### Mobile (Android/iOS)
+
 ```bash
 # Debug mode
 flutter run
@@ -137,6 +144,7 @@ flutter run --release
 ```
 
 #### Desktop (Linux/Windows/macOS)
+
 ```bash
 # Linux
 flutter run -d linux
@@ -167,6 +175,7 @@ O APK estará em: `build/app/outputs/flutter-apk/app-release.apk`
 ### 1️⃣ Configuração Inicial
 
 #### Criar Categorias
+
 1. Abra o **menu lateral** (ícone ☰)
 2. Acesse **Categorias**
 3. Toque no botão **+** (canto inferior direito)
@@ -176,6 +185,7 @@ O APK estará em: `build/app/outputs/flutter-apk/app-release.apk`
 **Exemplo**: Categoria "Bebidas" com ícone de copo e cor azul
 
 #### Cadastrar Produtos com Variações
+
 1. Abra o **menu lateral**
 2. Acesse **Produtos**
 3. Toque no botão **+**
@@ -200,6 +210,7 @@ O APK estará em: `build/app/outputs/flutter-apk/app-release.apk`
 ### 2️⃣ Gestão de Estoque
 
 #### Adicionar Estoque
+
 1. Acesse a aba **Estoque**
 2. Selecione o produto/variação
 3. Toque em **"Adicionar Estoque"**
@@ -207,6 +218,7 @@ O APK estará em: `build/app/outputs/flutter-apk/app-release.apk`
 5. Confirme
 
 #### Visualizar Movimentações
+
 - Acesse **Estoque** → **Histórico**
 - Veja todas as entradas, saídas e ajustes
 - Filtre por produto ou período
@@ -234,6 +246,7 @@ O APK estará em: `build/app/outputs/flutter-apk/app-release.apk`
    - Atualiza o dashboard
 
 #### Gerar PDF da Venda
+
 1. Na lista de vendas, toque na venda desejada
 2. Na tela de detalhes, toque no ícone **PDF**
 3. Compartilhe o recibo via WhatsApp, email, etc.
@@ -262,12 +275,14 @@ Acesse a aba **Relatórios** para:
 ### 6️⃣ Backup e Restauração
 
 #### Criar Backup
+
 1. Abra **Menu Lateral** → **Configurações**
 2. Seção **Backup e Restauração**
 3. Toque em **"Criar Backup"**
 4. Compartilhe o arquivo `.db` gerado
 
 #### Restaurar Backup
+
 1. Em **Configurações** → **Backup e Restauração**
 2. Toque em **"Restaurar Backup"**
 3. Selecione o arquivo `.db` anteriormente salvo
@@ -295,74 +310,81 @@ categorias (1) ──────< (N) produtos
 ### Tabelas Principais
 
 #### `categorias`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| nome | TEXT | Nome da categoria |
-| descricao | TEXT | Descrição (opcional) |
-| icone | TEXT | Nome do ícone Material |
-| cor | TEXT | Código de cor hex |
-| data_criacao | TEXT | ISO 8601 timestamp |
+
+| Campo        | Tipo    | Descrição              |
+| ------------ | ------- | ---------------------- |
+| id           | INTEGER | Chave primária         |
+| nome         | TEXT    | Nome da categoria      |
+| descricao    | TEXT    | Descrição (opcional)   |
+| icone        | TEXT    | Nome do ícone Material |
+| cor          | TEXT    | Código de cor hex      |
+| data_criacao | TEXT    | ISO 8601 timestamp     |
 
 #### `produtos`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| nome | TEXT | Nome do produto |
-| descricao | TEXT | Descrição (opcional) |
-| categoria_id | INTEGER | FK → categorias.id |
-| custo_total | REAL | Custo total de produção |
-| data_criacao | TEXT | ISO 8601 timestamp |
-| ativo | INTEGER | 1 = ativo, 0 = inativo |
+
+| Campo        | Tipo    | Descrição               |
+| ------------ | ------- | ----------------------- |
+| id           | INTEGER | Chave primária          |
+| nome         | TEXT    | Nome do produto         |
+| descricao    | TEXT    | Descrição (opcional)    |
+| categoria_id | INTEGER | FK → categorias.id      |
+| custo_total  | REAL    | Custo total de produção |
+| data_criacao | TEXT    | ISO 8601 timestamp      |
+| ativo        | INTEGER | 1 = ativo, 0 = inativo  |
 
 #### `variacoes`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| produto_id | INTEGER | FK → produtos.id |
-| nome | TEXT | Nome da variação (sabor/tamanho) |
-| preco_venda | REAL | Preço unitário de venda |
-| quantidade_estoque | INTEGER | Quantidade atual |
-| estoque_minimo | INTEGER | Alerta de estoque baixo |
-| data_criacao | TEXT | ISO 8601 timestamp |
-| ativo | INTEGER | 1 = ativo, 0 = inativo |
+
+| Campo              | Tipo    | Descrição                        |
+| ------------------ | ------- | -------------------------------- |
+| id                 | INTEGER | Chave primária                   |
+| produto_id         | INTEGER | FK → produtos.id                 |
+| nome               | TEXT    | Nome da variação (sabor/tamanho) |
+| preco_venda        | REAL    | Preço unitário de venda          |
+| quantidade_estoque | INTEGER | Quantidade atual                 |
+| estoque_minimo     | INTEGER | Alerta de estoque baixo          |
+| data_criacao       | TEXT    | ISO 8601 timestamp               |
+| ativo              | INTEGER | 1 = ativo, 0 = inativo           |
 
 #### `vendas`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| data_venda | TEXT | ISO 8601 timestamp |
-| valor_total | REAL | Valor total da venda |
-| custo_total | REAL | Custo total dos produtos |
-| lucro | REAL | Lucro (valor_total - custo_total) |
-| forma_pagamento | TEXT | DINHEIRO/PIX/DEBITO/CREDITO |
-| observacoes | TEXT | Observações (opcional) |
+
+| Campo           | Tipo    | Descrição                         |
+| --------------- | ------- | --------------------------------- |
+| id              | INTEGER | Chave primária                    |
+| data_venda      | TEXT    | ISO 8601 timestamp                |
+| valor_total     | REAL    | Valor total da venda              |
+| custo_total     | REAL    | Custo total dos produtos          |
+| lucro           | REAL    | Lucro (valor_total - custo_total) |
+| forma_pagamento | TEXT    | DINHEIRO/PIX/DEBITO/CREDITO       |
+| observacoes     | TEXT    | Observações (opcional)            |
 
 #### `itens_venda`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| venda_id | INTEGER | FK → vendas.id |
-| variacao_id | INTEGER | FK → variacoes.id (RESTRICT) |
-| quantidade | INTEGER | Quantidade vendida |
-| preco_unitario | REAL | Preço no momento da venda |
-| subtotal | REAL | quantidade × preco_unitario |
-| custo_unitario | REAL | Custo no momento da venda |
+
+| Campo          | Tipo    | Descrição                    |
+| -------------- | ------- | ---------------------------- |
+| id             | INTEGER | Chave primária               |
+| venda_id       | INTEGER | FK → vendas.id               |
+| variacao_id    | INTEGER | FK → variacoes.id (RESTRICT) |
+| quantidade     | INTEGER | Quantidade vendida           |
+| preco_unitario | REAL    | Preço no momento da venda    |
+| subtotal       | REAL    | quantidade × preco_unitario  |
+| custo_unitario | REAL    | Custo no momento da venda    |
 
 #### `movimentacoes_estoque`
-| Campo | Tipo | Descrição |
-|-------|------|-----------|
-| id | INTEGER | Chave primária |
-| variacao_id | INTEGER | FK → variacoes.id |
-| tipo | TEXT | ENTRADA/SAIDA/AJUSTE |
-| quantidade | INTEGER | Quantidade movimentada |
-| quantidade_anterior | INTEGER | Estoque antes |
-| quantidade_posterior | INTEGER | Estoque depois |
-| data_movimentacao | TEXT | ISO 8601 timestamp |
-| observacao | TEXT | Motivo da movimentação |
-| venda_id | INTEGER | FK → vendas.id (se for saída por venda) |
+
+| Campo                | Tipo    | Descrição                               |
+| -------------------- | ------- | --------------------------------------- |
+| id                   | INTEGER | Chave primária                          |
+| variacao_id          | INTEGER | FK → variacoes.id                       |
+| tipo                 | TEXT    | ENTRADA/SAIDA/AJUSTE                    |
+| quantidade           | INTEGER | Quantidade movimentada                  |
+| quantidade_anterior  | INTEGER | Estoque antes                           |
+| quantidade_posterior | INTEGER | Estoque depois                          |
+| data_movimentacao    | TEXT    | ISO 8601 timestamp                      |
+| observacao           | TEXT    | Motivo da movimentação                  |
+| venda_id             | INTEGER | FK → vendas.id (se for saída por venda) |
 
 ### Índices para Performance
+
 - `idx_produtos_categoria` em `produtos.categoria_id`
 - `idx_variacoes_produto` em `variacoes.produto_id`
 - `idx_vendas_data` em `vendas.data_venda`
@@ -437,12 +459,14 @@ lib/
 O sistema calcula lucro automaticamente em dois níveis:
 
 ### Por Item de Venda
+
 ```dart
 custoUnitario = produto.custoTotal / totalVariacoes
 lucroItem = (precoVenda - custoUnitario) × quantidade
 ```
 
 ### Por Venda Completa
+
 ```dart
 valorTotal = soma de todos os subtotais
 custoTotal = soma de todos os (custoUnitario × quantidade)
@@ -451,6 +475,7 @@ margemLucro = (lucro / valorTotal) × 100
 ```
 
 **Exemplo Prático**:
+
 - Produto: Chop (custo total de produção: R$ 30,00)
 - Variações: 3 sabores (Morango, Vinho, Uva)
 - Custo unitário automático: R$ 30,00 ÷ 200 unidades = R$ 0,15/unidade
@@ -504,6 +529,7 @@ adb uninstall com.example.controle_vendas
 ### Problema: APK antigo sendo instalado
 
 **Solução**:
+
 ```bash
 flutter clean
 rm -rf build/
@@ -533,6 +559,7 @@ Contribuições são bem-vindas! Para contribuir:
 5. Abra um Pull Request
 
 ### Padrões de Código
+
 - Siga o [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style)
 - Use `flutter analyze` antes de commitar
 - Documente funções públicas com comentários ///
@@ -549,14 +576,15 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 👨‍💻 Desenvolvedor
 
 **DevWander**
-- GitHub: [@DevWander](https://github.com/DevWander)
+
+- GitHub: [@DevWander](https://github.com/wanderlei2583)
 - Email: devwanderlei@gmail.com
 
 ---
 
 ## 📞 Suporte
 
-Encontrou um bug ou tem uma sugestão? Abra uma [issue](https://github.com/DevWander/controle_vendas/issues).
+Encontrou um bug ou tem uma sugestão? Abra uma [issue](https://github.com/wanderlei2583/controle_vendas/issues).
 
 ---
 
