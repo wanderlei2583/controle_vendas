@@ -577,8 +577,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **DevWander**
 
+- Website: [devwander.com.br](https://devwander.com.br)
 - GitHub: [@DevWander](https://github.com/wanderlei2583)
-- Email: devwanderlei@gmail.com
+- Email: contato@devwander.com.br
 
 ---
 
@@ -590,6 +591,6 @@ Encontrou um bug ou tem uma sugestão? Abra uma [issue](https://github.com/wande
 
 <div align="center">
 
-**Desenvolvido com ❤️ usando Flutter**
+**Desenvolvido com ❤️ para uma pessoa usando Flutter**
 
 </div>
